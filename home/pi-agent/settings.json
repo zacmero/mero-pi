@@ -9,8 +9,8 @@
     "npm:pi-mcp-adapter"
   ],
   "skills": [
-    "/home/zacmero/.agents/skills",
-    "/home/zacmero/projects/mero-browser"
+    "skills",
+    "/home/zacmero/.agents/skills"
   ],
   "enableSkillCommands": true,
   "defaultThinkingLevel": "medium",
