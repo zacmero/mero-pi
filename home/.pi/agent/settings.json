@@ -1,0 +1,13 @@
+{
+  "lastChangelogVersion": "0.74.0",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4-mini",
+  "packages": [
+    "npm:pi-mcp-adapter"
+  ],
+  "defaultThinkingLevel": "medium",
+  "treeFilterMode": "default"
+}

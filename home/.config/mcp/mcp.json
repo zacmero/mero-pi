@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "gemini-imagen": {
+      "command": "python3",
+      "args": ["/home/zacmero/projects/img-factory/gemini_mcp.py"]
+    },
+    "serena": {
+      "command": "/home/zacmero/projects/mero-2nd-brain/.venv/bin/serena",
+      "args": ["start-mcp-server"],
+      "directTools": true
+    },
+    "puppeteer": {
+      "command": "/home/zacmero/projects/mero-pi/bin/mcp-puppeteer-chromium",
+      "args": [],
+      "directTools": true,
+      "lifecycle": "keep-alive"
+    }
+  }
+}
