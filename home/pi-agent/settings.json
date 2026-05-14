@@ -4,10 +4,10 @@
     "showTerminalProgress": true
   },
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
+  "defaultModel": "gpt-5.4-mini",
   "packages": [
     "npm:pi-mcp-adapter"
   ],
-  "defaultThinkingLevel": "low",
+  "defaultThinkingLevel": "medium",
   "treeFilterMode": "default"
 }
