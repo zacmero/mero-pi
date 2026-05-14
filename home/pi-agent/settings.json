@@ -3,11 +3,16 @@
   "terminal": {
     "showTerminalProgress": true
   },
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4-mini",
+  "defaultProvider": "openrouter",
+  "defaultModel": "openrouter/free",
   "packages": [
     "npm:pi-mcp-adapter"
   ],
+  "skills": [
+    "/home/zacmero/.agents/skills",
+    "/home/zacmero/projects/mero-browser"
+  ],
+  "enableSkillCommands": true,
   "defaultThinkingLevel": "medium",
   "treeFilterMode": "default"
 }
