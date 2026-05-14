@@ -1,1 +1,4 @@
-{}
+{
+  "app.model.select": ["ctrl+shift+l"],
+  "app.thinking.cycle": ["shift+tab"]
+}

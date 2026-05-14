@@ -4,7 +4,7 @@
     "showTerminalProgress": true
   },
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4-mini",
+  "defaultModel": "gpt-5.4",
   "packages": [
     "npm:pi-mcp-adapter"
   ],
