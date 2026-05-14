@@ -3,5 +3,6 @@ set -euo pipefail
 
 export PUPPETEER_EXECUTABLE_PATH="${PUPPETEER_EXECUTABLE_PATH:-/usr/bin/chromium}"
 export PUPPETEER_SKIP_DOWNLOAD="${PUPPETEER_SKIP_DOWNLOAD:-1}"
+export PUPPETEER_LAUNCH_OPTIONS="${PUPPETEER_LAUNCH_OPTIONS:-{\"headless\":true,\"executablePath\":\"/usr/bin/chromium\",\"args\":[]}}"
 
 exec npx -y @modelcontextprotocol/server-puppeteer "$@"
