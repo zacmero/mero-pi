@@ -17,6 +17,32 @@ Source of truth for Pi config on this machine.
 
 ## Install
 
+---
+
+## Mero‑Browser skill
+
+The **`mero-browser`** skill provides a high‑level, headed browser interface for Pi. It works only when the **`mero‑browser`** project is checked out on the same machine at the path:
+
+```
+$HOME/projects/mero-browser
+```
+
+The skill implementation lives in `home/pi-agent/skills/mero-browser`. When you invoke `$mero-browser` (or `[$mero-browser]` in the picker) the skill reads the source files from that external project to drive the browser actions. If the project directory is missing, the skill will fail with a *“project not found”* error.
+
+### How to set it up
+1. Clone the repository:
+   ```bash
+   cd $HOME/projects
+   git clone https://github.com/your‑username/mero-browser.git
+   ```
+2. Ensure the directory exists exactly at `$HOME/projects/mero-browser`.
+3. Run the Pi install script (or simply reload the session) so the skill can locate the path.
+
+### Reference
+For a deeper look at how the skill works, see the **`mero-browser`** skill files in this repository (`home/pi-agent/skills/mero-browser`). They contain the concrete commands that invoke the external project, useful if you need to modify or extend the behavior.
+
+---
+
 Linux only. Supported: Debian/Ubuntu and Arch.
 
 ```bash

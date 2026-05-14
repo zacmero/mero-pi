@@ -3,8 +3,8 @@
   "terminal": {
     "showTerminalProgress": true
   },
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4-mini",
+  "defaultProvider": "openrouter",
+  "defaultModel": "openai/gpt-oss-120b:free",
   "packages": [
     "npm:pi-mcp-adapter"
   ],
