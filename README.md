@@ -14,6 +14,19 @@ Source of truth for Pi config on this machine.
 - `bin/mcp-puppeteer-chromium` -> Puppeteer MCP wrapper using Chromium
 - `scripts/bootstrap-pi-links.sh` -> relink home configs to repo
 
+## Install
+
+Linux only. Supported: Debian/Ubuntu and Arch.
+
+```bash
+./scripts/install-linux.sh
+```
+
+What it does:
+- installs `pi` via npm
+- installs base deps via apt/pacman
+- links home Pi config back to this repo
+
 ## Notes
 - Generated data stays in home: auth, cache, sessions.
 - Edit repo files only; relink after changes.

@@ -1,8 +1,28 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-export PUPPETEER_EXECUTABLE_PATH="${PUPPETEER_EXECUTABLE_PATH:-/usr/bin/chromium}"
+detect_browser() {
+  local candidate
+  for candidate in chromium chromium-browser google-chrome google-chrome-stable; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      command -v "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+BROWSER_PATH="${PUPPETEER_EXECUTABLE_PATH:-}"
+if [[ -z "$BROWSER_PATH" ]]; then
+  BROWSER_PATH="$(detect_browser || true)"
+fi
+
+if [[ -z "$BROWSER_PATH" ]]; then
+  echo "No Chromium-compatible browser found in PATH." >&2
+  exit 1
+fi
+
 export PUPPETEER_SKIP_DOWNLOAD="${PUPPETEER_SKIP_DOWNLOAD:-1}"
-export PUPPETEER_LAUNCH_OPTIONS="${PUPPETEER_LAUNCH_OPTIONS:-{\"headless\":true,\"executablePath\":\"/usr/bin/chromium\",\"args\":[]}}"
+export PUPPETEER_LAUNCH_OPTIONS="${PUPPETEER_LAUNCH_OPTIONS:-$(printf '{"headless":true,"executablePath":"%s","args":[]}' "$BROWSER_PATH")}"
 
 exec npx -y @modelcontextprotocol/server-puppeteer "$@"
