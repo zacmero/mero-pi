@@ -14,6 +14,18 @@
       "args": [],
       "directTools": true,
       "lifecycle": "keep-alive"
+    },
+    "morph-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@morphllm/morphmcp",
+        "--api-key",
+        "sk-jm5GVqbrc6UaCagU-lqMLf7HrzyWYaW5ytTV3dDj0fLWidlc"
+      ],
+      "env": {
+        "MORPH_API_KEY": "sk-jm5GVqbrc6UaCagU-lqMLf7HrzyWYaW5ytTV3dDj0fLWidlc"
+      }
     }
   }
 }
