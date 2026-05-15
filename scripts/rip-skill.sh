@@ -74,17 +74,20 @@ elif [[ -f "$src" && "$(basename "$src")" == "SKILL.md" ]]; then
   cp -a "$(dirname "$src")" "$dest"
 else
   case "$src" in
-    *.md|*.MD)
-      skill_name="$(basename "$src" .md)"
-      dest="$DEST_ROOT/$skill_name.md"
-      rm -f "$dest"
-      cp -a "$src" "$dest"
-      ;;
-    *)
-      echo "Unsupported skill source: $src" >&2
-      exit 1
-      ;;
+  *.md | *.MD)
+    skill_name="$(basename "$src" .md)"
+    dest="$DEST_ROOT/$skill_name.md"
+    rm -f "$dest"
+    cp -a "$src" "$dest"
+    ;;
+  *)
+    echo "Unsupported skill source: $src" >&2
+    exit 1
+    ;;
   esac
 fi
 
 echo "Ripped skill -> $dest"
+
+# Runs again the bootstrap-pi-links so new skill symlinks are correct and wont cause conflicts.
+"$REPO_ROOT/scripts/bootstrap-pi-links.sh"

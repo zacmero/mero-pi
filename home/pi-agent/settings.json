@@ -3,16 +3,16 @@
   "terminal": {
     "showTerminalProgress": true
   },
-  "defaultProvider": "openrouter",
-  "defaultModel": "nvidia/nemotron-3-super-120b-a12b:free",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4-mini",
   "packages": [
     "npm:pi-mcp-adapter"
   ],
   "skills": [
-    "skills",
-    "/home/zacmero/.agents/skills"
+    "skills"
   ],
   "enableSkillCommands": true,
-  "defaultThinkingLevel": "medium",
-  "treeFilterMode": "default"
+  "defaultThinkingLevel": "low",
+  "treeFilterMode": "default",
+  "quietStartup": true
 }

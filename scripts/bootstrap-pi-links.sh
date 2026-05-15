@@ -31,6 +31,7 @@ link_file "$REPO_ROOT/home/pi-agent/keybindings.json" "$HOME_DIR/.pi/agent/keybi
 link_file "$REPO_ROOT/home/pi-agent/AGENTS.md" "$HOME_DIR/.pi/agent/AGENTS.md"
 link_dir "$REPO_ROOT/home/pi-agent/prompts" "$HOME_DIR/.pi/agent/prompts"
 link_dir "$REPO_ROOT/home/pi-agent/skills" "$HOME_DIR/.pi/agent/skills"
+link_dir "$REPO_ROOT/home/pi-agent/skills" "$HOME_DIR/.agents/skills"
 link_dir "$REPO_ROOT/home/pi-agent/extensions" "$HOME_DIR/.pi/agent/extensions"
 link_dir "$REPO_ROOT/home/pi-agent/themes" "$HOME_DIR/.pi/agent/themes"
 
