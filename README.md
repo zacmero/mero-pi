@@ -1,6 +1,6 @@
 # mero-pi
 
-Source of truth for Pi config on this machine.
+This repository serves as a rigorous experimental platform for the systematic study of coding agents and DevOps practices. Its primary aim is to engineer a super‑efficient, pragmatic, and portable agent capable of shared memory and session management across diverse execution contexts.
 
 ## Layout
 - `home/config/mcp/mcp.json` -> shared MCP config
