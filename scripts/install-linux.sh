@@ -31,7 +31,11 @@ install_pacman() {
 
 install_pi() {
   if ! have pi; then
-    $SUDO_CMD npm install -g @earendil-works/pi-coding-agent
+    if [[ "${ID:-}" == "arch" ]] && have yay; then
+      yay -S --needed --noconfirm pi
+    else
+      $SUDO_CMD npm install -g @earendil-works/pi-coding-agent
+    fi
   else
     echo "pi already installed: $(pi --version 2>/dev/null || true)"
   fi

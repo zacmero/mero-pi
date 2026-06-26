@@ -21,66 +21,59 @@ This repository serves as a rigorous experimental platform for the systematic st
 
 ## Updating the pi‑agent on this machine
 
-The `pi` executable on this system is a symlink to a globally installed **npm** package:
+This machine’s `pi` binary is AUR-owned, not official pacman repo-owned:
 
 ```bash
-ls -l /usr/bin/pi
-# → /usr/lib/node_modules/pi/packages/coding-agent/dist/cli.js
+pacman -Qo /usr/bin/pi
+# pi 0.77.0-1 owns /usr/bin/pi and /usr/lib/node_modules/pi/...
 ```
 
-Because the executable lives outside of a git checkout, the built‑in `pi update` command cannot self‑update it (it reports *"this installation is not managed by a global npm install"*).  To upgrade the core `pi` binary you must use the package manager that installed it.
+Use the AUR helper that owns the install:
 
-### 1. Update via npm (the typical installation method)
 ```bash
-# Update the global npm package
-sudo npm install -g pi
-```
-This will pull the latest version from the npm registry and replace the files under `/usr/lib/node_modules/pi`.
+# Arch/AUR: update only pi (no full system upgrade)
+yay -S pi
 
-### 2. Update via a system package manager (apt, dnf, brew, …)
-If `pi` was installed from a distribution package, reinstall it with the appropriate manager, e.g.:
+# If yay already built the newer package and you only want the local artifact
+sudo pacman -U ~/.cache/yay/pi/pi-*.pkg.tar.zst
+
+# Generic npm install is NOT the path on this machine
+# (only use it on npm-based installs)
+sudo npm install -g @earendil-works/pi-coding-agent@latest
+```
+
+If `pi update` reports "cannot self-update this installation", that is expected here.
+
+### Update extensions
+
+Use the exact package IDs from `pi list`:
+
 ```bash
-# Debian/Ubuntu
-sudo apt-get install --reinstall pi
-
-# Fedora
-sudo dnf reinstall pi
-
-# macOS (Homebrew)
-brew reinstall pi
+pi update npm:pi-mcp-adapter
+pi update git:github.com/DietrichGebert/ponytail
 ```
 
-### 3. Update from source (custom builds)
-When `pi` is built from source you can pull the latest commits and reinstall:
+### rtk extension
+
+`home/pi-agent/extensions/rtk.ts` is the agent-first hook. `scripts/bootstrap-pi-links.sh` symlinks `home/pi-agent/extensions` into `~/.pi/agent/extensions`, so Pi loads it on startup.
+
+What it does:
+- probes `rtk --version` at load time
+- logs `[rtk] active; rewrite hook enabled (...)` on startup when loaded
+- on every Pi `bash` tool call, runs `rtk rewrite "<command>"`
+- replaces the command if `rtk` returns a rewrite
+- skips only commands already starting with `rtk `
+
+How you know it is active:
+1. Restart Pi.
+2. Look for the startup log from `home/pi-agent/extensions/rtk.ts`.
+3. Run a Pi bash tool call; the hook will rewrite it before execution.
+
+Quick local check:
 ```bash
-git clone https://github.com/pi-dev/pi.git ~/src/pi
-cd ~/src/pi
-npm install -g .
+rtk --version
+rtk rewrite "ls -l"
 ```
-After any of these steps, verify the version:
-```bash
-pi --version
-```
-
----
-
-## Updating extensions (e.g., `pi-mcp-adapter`, `ponytail`)
-Extensions are managed by `pi` itself.  Run:
-```bash
-pi update           # updates all installed extensions
-# or update a specific one
-pi update pi-mcp-adapter
-pi update ponytail
-```
-The `ponytail` extension was already refreshed by the previous `pi update` run.
-
----
-
-## About the `rtk` extension
-The `rtk` extension is installed in this repository at `home/pi-agent/extensions/rtk.ts` and the binary is available in the PATH (`which rtk`).  It rewrites bash commands to use `rtk` for token savings.
-
-If you ever need to reinstall or upgrade `rtk`, use its own installer (e.g. `cargo install rtk` or your OS package manager).  After updating, restart any Pi sessions to load the new version.
-
 
 ## Mero‑Browser skill
 
@@ -113,7 +106,7 @@ Linux only. Supported: Debian/Ubuntu and Arch.
 ```
 
 What it does:
-- installs `pi` via npm
+- installs `pi` via `yay` on Arch when available; npm fallback elsewhere
 - installs base deps via apt/pacman
 - links home Pi config back to this repo
 

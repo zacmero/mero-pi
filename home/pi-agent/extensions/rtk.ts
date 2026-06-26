@@ -56,6 +56,8 @@ export default async function (pi: ExtensionAPI) {
     }
   }
 
+  console.info(`[rtk] active; rewrite hook enabled (${ver.stdout.trim()})`)
+
   pi.on("tool_call", async (event, ctx) => {
     try {
       if (!isToolCallEventType("bash", event)) return
