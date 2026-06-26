@@ -1,18 +1,19 @@
 {
-  "lastChangelogVersion": "0.74.0",
+  "lastChangelogVersion": "0.77.0",
   "terminal": {
     "showTerminalProgress": true
   },
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4-mini",
+  "defaultProvider": "openrouter",
+  "defaultModel": "openai/gpt-oss-120b:free",
   "packages": [
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "git:github.com/DietrichGebert/ponytail"
   ],
   "skills": [
     "skills"
   ],
   "enableSkillCommands": true,
-  "defaultThinkingLevel": "low",
+  "defaultThinkingLevel": "medium",
   "treeFilterMode": "default",
   "quietStartup": true
 }
