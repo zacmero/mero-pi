@@ -75,6 +75,11 @@ rtk --version
 rtk rewrite "ls -l"
 ```
 
+Disable for a Pi session only:
+```bash
+RTK_DISABLED=1 pi
+```
+
 ## Mero‑Browser skill
 
 The **`mero-browser`** skill provides a high‑level, headed browser interface for Pi. It works only when the **`mero‑browser`** project is checked out on the same machine at the path:

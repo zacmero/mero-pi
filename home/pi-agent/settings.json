@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.77.0",
+  "lastChangelogVersion": "0.80.2",
   "terminal": {
     "showTerminalProgress": true
   },
@@ -15,5 +15,6 @@
   "enableSkillCommands": true,
   "defaultThinkingLevel": "medium",
   "treeFilterMode": "default",
-  "quietStartup": true
+  "quietStartup": true,
+  "theme": "dark"
 }
